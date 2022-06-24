@@ -3,6 +3,7 @@ package com.infnet.imcapplication
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -16,11 +17,16 @@ class MainActivity : AppCompatActivity() {
         btnCalcular.setOnClickListener {
             val peso = editTxtPeso.text.toString()
             val altura = editTxtAltura.text.toString()
+            val msg = "O preenchimento de todos os campos são necessários"
 
-            val imc = Math.round(calcularIMC(peso, altura)).toDouble()
-            editTxtIMC.text = imc.toString()
-            textViewGrauObesidade.text = grauIMC(imc)
-            card_view.visibility = View.VISIBLE
+            if (peso.isEmpty() and altura.isEmpty()) {
+                Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
+            } else {
+                val imc = Math.round(calcularIMC(peso, altura)).toDouble()
+                editTxtIMC.text = "${imc.toString()} kg/m²"
+                textViewGrauObesidade.text = grauIMC(imc)
+                card_view.visibility = View.VISIBLE
+            }
         }
     }
 
