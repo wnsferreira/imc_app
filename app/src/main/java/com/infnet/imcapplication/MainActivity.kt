@@ -2,6 +2,7 @@ package com.infnet.imcapplication
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -9,23 +10,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val peso = editTxtPeso.text.toString()
+        supportActionBar?.hide()
 
-        val altura = editTxtAltura.text.toString()
-
+        card_view.visibility = View.INVISIBLE
         btnCalcular.setOnClickListener {
-            val imc = calcularIMC(peso, altura)
+            val peso = editTxtPeso.text.toString()
+            val altura = editTxtAltura.text.toString()
 
+            val imc = Math.round(calcularIMC(peso, altura)).toDouble()
             editTxtIMC.text = imc.toString()
-
             textViewGrauObesidade.text = grauIMC(imc)
+            card_view.visibility = View.VISIBLE
         }
     }
 
-    fun calcularIMC(peso: String, altura: String): Double =
+    private fun calcularIMC(peso: String, altura: String): Double =
         peso.toDouble() / (altura.toDouble() * altura.toDouble())
 
-    fun grauIMC(indice: Double): String {
+    private fun grauIMC(indice: Double): String {
         return when (indice) {
             in 0.0..15.9 -> "Magreza grave"
             in 16.0..16.9 -> "Magreza moderada"
@@ -37,4 +39,6 @@ class MainActivity : AppCompatActivity() {
             else -> "Obesidade Grau III (mórbida)"
         }
     }
+
+
 }
