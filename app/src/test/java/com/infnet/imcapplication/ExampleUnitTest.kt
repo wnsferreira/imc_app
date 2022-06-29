@@ -11,7 +11,14 @@ import org.junit.Assert.*
  */
 class ExampleUnitTest {
     @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+    fun imcCalcIsCorrect() {
+
+        val peso: String = "80"
+        val altura: String = "1.80"
+
+        val expected = 25.0
+        val actual = Math.round(peso.toDouble() / (altura.toDouble() * altura.toDouble()))
+
+        assertEquals(expected, actual.toDouble(), .1)
     }
 }
