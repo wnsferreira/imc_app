@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">ImcApplication</string>
+    <string name="titulo_imc">Índice de Massa Corporal</string>
+    <string name="subtitulo_imc">Uma medida da gordura corporal em adultos</string>
+    <string name="txt_kg">kg</string>
+    <string name="lbl_peso">Peso:</string>
+    <string name="lbl_altura">Altura:</string>
+    <string name="txt_cm">cm</string>
+    <string name="lbl_calcular">Calcular</string>
+    <string name="grau">grau</string>
+    <string name="lbl_resultado">Resultado:</string>
 </resources>
